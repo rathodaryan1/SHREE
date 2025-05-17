@@ -10,7 +10,12 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <Logo variant="white" className="mb-4 max-w-[200px]" />
+           <img 
+  src="/Shree_page-0001.jpg" 
+  alt="Shree Enterprise Logo" 
+  className="mb-4 max-w-[200px]" 
+/>
+
             <p className="text-gray-400 mb-6 mt-2">
               Leading provider of comprehensive fire safety solutions for commercial, industrial, and residential properties.
             </p>

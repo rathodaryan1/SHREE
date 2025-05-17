@@ -22,19 +22,19 @@ export default function Hero() {
             Expert installation, maintenance, and service of fire safety systems to protect what matters most.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="#services">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-red-700 text-white font-roboto font-medium w-full sm:w-auto px-6 py-6 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
-              >
-                Explore Our Services
-              </Button>
-            </Link>
+            <Link href="/services">
+  <Button className="bg-primary hover:bg-red-700 text-white font-roboto font-semibold w-full sm:w-auto px-10 py-7 text-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all rounded-2xl"
+>
+    Explore Our Services
+  </Button>
+</Link>
+
             <Link href="/contact">
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="bg-transparent hover:bg-white/20 text-white border-2 border-white font-roboto font-medium w-full sm:w-auto px-6 py-6 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                className="bg-primary hover:bg-red-700 text-white font-roboto font-medium w-full sm:w-auto px-6 py-6 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+
               >
                 Contact Us
               </Button>
