@@ -53,9 +53,26 @@ app.use((req, res, next) => {
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
+ } else {
+  // Serve static files from dist/public
+  const path = await import("path");
+  const { fileURLToPath } = await import("url");
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  const publicPath = path.resolve(__dirname, "public");
+
+  app.use(express.static(publicPath));
+
+  // Fallback for SPA routes
+  app.get("*", (req, res) => {
+    if (!req.path.startsWith("/api")) {
+      res.sendFile(path.join(publicPath, "index.html"));
+    }
+  });
+}
+
 
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
