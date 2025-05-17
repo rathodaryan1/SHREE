@@ -130,7 +130,7 @@ export const galleryItems: GalleryItem[] = [
     id: 1,
     title: "Commercial Building Hydrant System",
     description: "Complete installation for a 10-floor office building",
-    imageUrl: "/commercial-building-fire-hydrants-systems.jpg",
+    imageUrl: "/commercial-building-fire-hydrants-systemss.jpg",
   },
   {
     id: 2,
