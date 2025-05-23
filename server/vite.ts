@@ -26,20 +26,19 @@ export async function setupVite(app: Express, server: Server) {
     allowedHosts: true as true,
   };
 
-const vite = await createViteServer({
-  ...viteConfig,
-  configFile: false,
-  customLogger: {
-    ...viteLogger,
-    error: (msg, options) => {
-      viteLogger.error(msg, options);
-      process.exit(1);
+  const vite = await createViteServer({
+    ...viteConfig,
+    configFile: false,
+    customLogger: {
+      ...viteLogger,
+      error: (msg, options) => {
+        viteLogger.error(msg, options);
+        process.exit(1);
+      },
     },
-  },
- server:serverOptions,
-  appType: "custom",
-});
-
+    server: serverOptions,
+    appType: "custom",
+  });
 
   app.use(vite.middlewares);
   app.use("*", async (req, res, next) => {
