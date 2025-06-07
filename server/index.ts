@@ -1,7 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import 'dotenv/config';
 
 const app = express();
 app.use(express.json());
@@ -53,32 +52,15 @@ app.use((req, res, next) => {
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
- } else {
-  // Serve static files from dist/public
-  const path = await import("path");
-  const { fileURLToPath } = await import("url");
-
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-
-  const publicPath = path.resolve(__dirname, "public");
-
-  app.use(express.static(publicPath));
-
-  // Fallback for SPA routes
-  app.get("*", (req, res) => {
-    if (!req.path.startsWith("/api")) {
-      res.sendFile(path.join(publicPath, "index.html"));
-    }
-  });
-}
-
+  } else {
+    serveStatic(app);
+  }
 
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
- const port = process.env.PORT || 5001;
-server.listen(port, () => {
-  log(`serving on port ${port}`);
+  const port = 5000;
+  server.listen(port, () => {
+  log(`serving on http://localhost:${port}`);
 });
 })();
